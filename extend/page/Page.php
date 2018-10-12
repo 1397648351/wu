@@ -101,7 +101,7 @@ class Page extends Paginator{
         if ($this->hasPages()) {
             if ($this->simple) {
                 return sprintf(
-                    '%s<div class="pagination">%s %s %s</div>',
+                    '%s<div class="pagination">%s%s  %s</div>',
                     $this->css(),
                     $this->prev(),
                     $this->getLinks(),
@@ -109,7 +109,7 @@ class Page extends Paginator{
                 );
             } else {
                 return sprintf(
-                    '%s<div class="pagination">%s %s %s %s %s %s</div>',
+                    '%s<div class="pagination">%s%s%s%s%s%s</div>',
                     $this->css(),
                     $this->home(),
                     $this->prev(),
@@ -194,67 +194,6 @@ class Page extends Paginator{
      * 分页样式
      */
     protected function css(){
-        return '  <style type="text/css">
-            .pagination p{
-                margin:0;
-                cursor:pointer
-            }
-            .pagination{
-                height:40px;
-                padding:20px 0px;
-            }
-            .pagination a{
-                display:block;
-                float:left;
-                margin-right:10px;
-                padding:2px 12px;
-                height:24px;
-                border:1px #cccccc solid;
-                background:#fff;
-                text-decoration:none;
-                color:#808080;
-                font-size:12px;
-                line-height:24px;
-            }
-            .pagination a:hover{
-                color:#077ee3;
-                background: white;
-                border:1px #077ee3 solid;
-            }
-            .pagination a.cur{
-                border:none;
-                background:#077ee3;
-                color:#fff;
-            }
-            .pagination p{
-                float:left;
-                padding:2px 12px;
-                font-size:12px;
-                height:24px;
-                line-height:24px;
-                color:#bbb;
-                border:1px #ccc solid;
-                background:#fcfcfc;
-                margin-right:8px;
-            }
-            .pagination p.pageRemark{
-                border-style:none;
-                background:none;
-                margin-right:0px;
-                padding:4px 0px;
-                color:#666;
-            }
-            .pagination p.pageRemark b{
-                color:red;
-            }
-            .pagination p.pageEllipsis{
-                border-style:none;
-                background:none;
-                padding:4px 0px;
-                color:#808080;
-            }
-            .dates li {font-size: 14px;margin:20px 0}
-            .dates li span{float:right}
-        </style>';
+        return '';
     }
 }

@@ -1,0 +1,75 @@
+{extend name="template:base" /}
+{block name="title"}写真{/block}
+{block name="other_css"}
+<style>
+    .pagination {
+        text-align: right;
+    }
+
+    .img-list {
+        padding-top: 10px;
+        font-size: 0;
+        text-decoration: none;
+        border: 1px solid #AACBEE;
+    }
+
+    .img-list * {
+        box-sizing: content-box;
+    }
+
+    .img-list > .img-item {
+        display: inline-block;
+        vertical-align: middle;
+        height: 235px;
+        width: 148px;
+        margin: 0 0 10px 10px;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .img-list > .img-item > a {
+    }
+
+    .img-list > .img-item > a > * {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .img-list > .img-item > a > img {
+        width: 133px;
+        height: 190px;
+        padding: 5px;
+        border: 1px solid #ddd;
+        margin-bottom: 8px;
+    }
+
+    .img-list > .img-item > a > span {
+        font-size: 11px;
+        max-width: 132px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+{/block}
+{block name="body"}
+<div>
+    <ul class="img-list">
+        {volist name='list' id='item'}
+        <li class="img-item">
+            <a href="{:url('index/xiezhen','name='.$item.path)}" title="{$item.name}" target="_blank">
+                <img src="{$item.src}" />
+                <span>{$item.name}</span>
+            </a>
+        </li>
+        {/volist}
+    </ul>
+    {$list|raw}
+</div>
+{/block}
+{block name="other_js"}
+<!-- other js -->
+<script>
+
+</script>
+{/block}

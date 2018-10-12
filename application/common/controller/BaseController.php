@@ -8,6 +8,7 @@
 
 namespace app\common\controller;
 
+use page\Page;
 use think\Controller;
 
 class BaseController extends Controller
@@ -56,5 +57,15 @@ class BaseController extends Controller
         }
         $template = $controller . '/' . $dir . '/' . $action;
         return $this->fetch($template);
+    }
+
+    function get_page($data, $listRows)
+    {
+        // 获取分页显示
+        $curpage = input('page') ? input('page') : 1;//当前第x页，有效值为：1,2,3,4,5...
+        $offset = ($curpage - 1) * $listRows;
+        $showdata = array_slice($data, $offset, $listRows, false);
+        $list = Page::make($showdata, $listRows, $curpage, count($data));
+        return $list;
     }
 }

@@ -1,0 +1,41 @@
+{extend name="template:base" /}
+{block name="title"}{$name}{/block}
+{block name="other_css"}
+<style>
+    .title {
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .img-list {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .img-list .img-item {
+        margin-bottom: 10px;
+    }
+    .img-item img{
+        padding: 5px;
+        border: 1px solid #ddd;
+    }
+</style>
+{/block}
+{block name="body"}
+<div>
+    <h1 class="title">{$name}</h1>
+    <ul class="img-list">
+        {volist name='list' id='item'}
+        <li class="img-item">
+            <img src="{$item}" type="image/jpeg">
+        </li>
+        {/volist}
+    </ul>
+</div>
+{/block}
+{block name="other_js"}
+<!-- other js -->
+<script>
+
+</script>
+{/block}
