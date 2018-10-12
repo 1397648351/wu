@@ -2,3 +2,6 @@
 /.vscode
 *.log
 .env
+.project
+.buildpath
+.settings
