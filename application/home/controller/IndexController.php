@@ -3,6 +3,8 @@
 namespace app\home\controller;
 
 use app\common\controller\BaseController;
+use Redis;
+use think\facade\Cache;
 use think\facade\Env;
 
 class IndexController extends BaseController
@@ -13,6 +15,9 @@ class IndexController extends BaseController
         $dir = Env::get('root_path') . 'public' . $path;
         $data = scandir($dir);
         if ($data) {
+            $index = array_search('.gitignore', $data);
+            if ($index)
+                array_splice($data, $index, 1);
             array_splice($data, 0, 2);
             rsort($data);
         } else
@@ -25,6 +30,8 @@ class IndexController extends BaseController
                 'src' => $path . '/' . $data[$i] . '/001.jpg'
             ];
         }
+        //dump($data);
+        //exit(0);
         // 获取分页显示
         $list = $this->get_page($data, 30);
         $this->assign('list', $list);
@@ -54,5 +61,17 @@ class IndexController extends BaseController
     public function hello($name = 'ThinkPHP5')
     {
         return 'hello,' . $name;
+    }
+
+    public function testredis()
+    {
+        $redis = new Redis();
+        $redis->connect('192.168.100.142', 6379);
+        $redis->auth('njbosa');
+        //$data = $redis->hgetall('TAB_DEVICERESOURCE');
+        $data = $redis->hget('TAB_DEVICERESOURCE','185');
+        var_dump($data);
+        //echo "Server is running: " . $redis->ping();
+        //dump(cache('TAB_DEVICERESOURCE'));
     }
 }
