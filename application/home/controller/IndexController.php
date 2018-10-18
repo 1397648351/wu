@@ -4,7 +4,6 @@ namespace app\home\controller;
 
 use app\common\controller\BaseController;
 use Redis;
-use think\facade\Cache;
 use think\facade\Env;
 
 class IndexController extends BaseController
@@ -56,11 +55,6 @@ class IndexController extends BaseController
         $this->assign('name', $str);
         $this->assign('list', $data);
         return $this->fetch();
-    }
-
-    public function hello($name = 'ThinkPHP5')
-    {
-        return 'hello,' . $name;
     }
 
     public function testredis()
